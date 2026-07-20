@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuthStore } from '../../store/authStore';
 import { facultyApi } from '../../api/faculty.api';
 import type { FacultyAnalytics } from '../../types';
-import { Loader2, Users, BookOpen, Clock, Activity, AlertCircle } from 'lucide-react';
+import { Loader2, Users, BookOpen, Clock, Activity, AlertCircle, Play } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -72,8 +72,14 @@ export default function FacultyDashboard() {
           <p className="text-3xl font-bold">{stats?.activeSessions || 0}</p>
         </div>
         <div className="stat-card border border-primary-200 dark:border-primary-900/50 bg-primary-50/50 dark:bg-primary-900/10">
-          <h3 className="font-semibold text-primary-700 dark:text-primary-400 mb-2">Dashboard Cards</h3>
+          <h3 className="font-semibold text-primary-700 dark:text-primary-400 mb-2">Quick Actions</h3>
           <div className="space-y-2 mt-auto">
+            <button 
+              onClick={() => navigate('/faculty/classes')}
+              className="btn-primary py-2 text-sm w-full block text-center bg-blue-600 hover:bg-blue-700"
+            >
+              📚 My Classes
+            </button>
             <button 
               onClick={() => navigate('/faculty/analytics')}
               className="btn-primary py-2 text-sm w-full block text-center bg-violet-600 hover:bg-violet-700"
@@ -86,6 +92,14 @@ export default function FacultyDashboard() {
             >
               📋 Attendance
             </button>
+            {stats?.activeSessions > 0 && (
+              <button 
+                onClick={() => navigate('/faculty/classes')}
+                className="btn-primary py-2 text-sm w-full block text-center bg-red-600 hover:bg-red-700 flex items-center justify-center gap-2"
+              >
+                <Play size={16} /> Resume Class
+              </button>
+            )}
           </div>
         </div>
       </div>

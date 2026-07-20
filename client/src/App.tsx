@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { useEffect } from 'react';
 import { useAuthStore } from './store/authStore';
@@ -12,11 +12,13 @@ import AuthLayout from './layouts/AuthLayout';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 
+// Landing Page
+import LandingPage from './pages/LandingPage';
+
 // Student Pages
 import StudentDashboard from './pages/student/StudentDashboard';
 import FaceRegistration from './pages/student/FaceRegistration';
 import AttendanceHistory from './pages/student/AttendanceHistory';
-import NotificationsPage from './pages/student/NotificationsPage';
 import StudentLiveAttendance from './pages/student/StudentLiveAttendance';
 
 // Faculty Pages
@@ -78,7 +80,7 @@ function App() {
       />
       
       <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/" element={<LandingPage />} />
 
         {/* Public Routes */}
         <Route element={<AuthLayout />}>
@@ -94,7 +96,6 @@ function App() {
             <Route index element={<StudentDashboard />} />
             <Route path="face-registration" element={<FaceRegistration />} />
             <Route path="attendance" element={<AttendanceHistory />} />
-            <Route path="notifications" element={<NotificationsPage />} />
             <Route path="live/:sessionId" element={<StudentLiveAttendance />} />
           </Route>
 

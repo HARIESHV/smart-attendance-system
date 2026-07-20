@@ -27,15 +27,16 @@ export default function Navbar() {
 
       {/* Right actions */}
       <div className="flex items-center gap-2">
-        {/* Notifications */}
-        <button
-          onClick={() => navigate(user?.role === 'faculty' ? '/faculty/notifications' : '/student/notifications')}
-          className="p-2.5 rounded-xl bg-gray-100 dark:bg-dark-600 text-gray-600 dark:text-gray-300
-            hover:bg-gray-200 dark:hover:bg-dark-500 transition-all duration-200 hover:scale-105"
-          title="Notifications"
-        >
-          <Bell size={18} />
-        </button>
+        {user?.role !== 'student' && (
+          <button
+            onClick={() => navigate('/faculty/notifications')}
+            className="p-2.5 rounded-xl bg-gray-100 dark:bg-dark-600 text-gray-600 dark:text-gray-300
+              hover:bg-gray-200 dark:hover:bg-dark-500 transition-all duration-200 hover:scale-105"
+            title="Notifications"
+          >
+            <Bell size={18} />
+          </button>
+        )}
 
         <button
           id="theme-toggle"

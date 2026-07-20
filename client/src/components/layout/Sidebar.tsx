@@ -2,15 +2,14 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
 import { useUIStore } from '../../store/uiStore';
 import {
-  LayoutDashboard, Camera, ClipboardList, Bell, BookOpen,
-  BarChart3, LogOut, ChevronLeft, ChevronRight, Cpu, MessageSquare,
+  LayoutDashboard, Camera, ClipboardList, BookOpen,
+  BarChart3, LogOut, ChevronLeft, ChevronRight, Cpu,
 } from 'lucide-react';
 
 const studentNav = [
   { to: '/student', label: 'Dashboard', icon: LayoutDashboard, end: true },
   { to: '/student/face-registration', label: 'Face Registration', icon: Camera },
   { to: '/student/attendance', label: 'My Attendance', icon: ClipboardList },
-  { to: '/student/notifications', label: 'Notifications', icon: Bell },
 ];
 
 const facultyNav = [

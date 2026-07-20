@@ -175,7 +175,11 @@ export default function ClassManager() {
                   
                   <div className="flex gap-4 text-sm text-gray-600 dark:text-gray-400 items-center justify-between">
                      <div className="flex items-center gap-1"><Users size={16} /> {cls?.students?.length || 0} Enrolled</div>
-                     {completedToday ? (
+                     {activeSession ? (
+                       <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                         <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Status: Live
+                       </span>
+                     ) : completedToday ? (
                        <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">
                          Attendance Completed
                        </span>
@@ -188,7 +192,11 @@ export default function ClassManager() {
                 </div>
                 <div className="p-3 bg-gray-50 dark:bg-dark-600/50 flex gap-2">
                   <button onClick={() => loadStudents(cls?._id)} className="btn-secondary flex-1 text-sm py-2 text-center">Manage</button>
-                  {completedToday ? (
+                  {activeSession ? (
+                    <button onClick={() => navigate(`/faculty/session/${activeSession?._id}`)} className="btn-primary flex-1 flex items-center justify-center gap-2 py-2 text-sm bg-emerald-600 hover:bg-emerald-700 text-white">
+                      <Play size={16} fill="currentColor" /> Resume Class
+                    </button>
+                  ) : completedToday ? (
                     <button onClick={() => navigate('/faculty/reports')} className="btn-secondary flex-1 flex items-center justify-center gap-2 py-2 text-sm">
                       View Report
                     </button>
